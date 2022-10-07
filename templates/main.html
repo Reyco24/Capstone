@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    table, form{
+        padding-left: 10%;
+        padding-top: 6px;
+    }
+    th:tr{
+        color: blue;
+  
+    }
+    tr:nth-of-type(2n){
+        border: 1px solid black;
+        background-color: rgba(150, 150, 150, 0.5);
+  
+    }
+  
+    td{
+        padding: 8px 8px;
+        border: 1px solid black;
+    }
+</style>
+<body>
+    <table>
+        <tr>
+            <th>{{request.form['type']}}</th>
+            <th>Time</th>
+        </tr>
+        <tr>
+            {% for i in range(0, len) %}
+            <tr>
+                <td>{{data[i]}}</td>
+                <td>{{time[i]}}</td>
+            </tr>
+            {% endfor %}
+        </tr>
+    </table>
+    <form method="post">
+        <label for="title">Content</label>
+        <br>
+        <select id="type" name="type" value="{{ request.form['type'] }}">
+        <option value='EventId'>EventId</option>
+        <option value='EventName'>EventName</option>
+        <option value='ReadOnly'>ReadOnly</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
