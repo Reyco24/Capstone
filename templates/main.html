@@ -28,7 +28,17 @@
     }
 </style>
 <body>
-    <table>
+    <form method="post">
+        <label for="title">Content</label>
+        <br>
+        <select id="type" name="type" value="{{ request.form['type'] }}">
+        <option value='EventId'>EventId</option>
+        <option value='EventName'>EventName</option>
+        <option value='ReadOnly'>ReadOnly</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+        <table>
         <tr>
             <th>{{request.form['type']}}</th>
             <th>Time</th>
@@ -42,15 +52,5 @@
             {% endfor %}
         </tr>
     </table>
-    <form method="post">
-        <label for="title">Content</label>
-        <br>
-        <select id="type" name="type" value="{{ request.form['type'] }}">
-        <option value='EventId'>EventId</option>
-        <option value='EventName'>EventName</option>
-        <option value='ReadOnly'>ReadOnly</option>
-        </select>
-        <button type="submit">Submit</button>
-    </form>
 </body>
 </html>
